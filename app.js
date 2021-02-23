@@ -12,10 +12,13 @@ const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const NotFoundErr = require('./errors/not-found-err');
 
-const { PORT = 3000 } = process.env;
+const {
+  PORT = 3000,
+  MONGO = 'mongodb://localhost:27017/bitfilmsdb'
+} = process.env;
 const app = express();
 
-mongoose.connect('mongodb://localhost:27017/bitfilmsdb', {
+mongoose.connect(MONGO, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useFindAndModify: false,
