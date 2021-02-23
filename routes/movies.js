@@ -16,7 +16,7 @@ moviesRouter.post('/movies', celebrate({
     thumbnail: Joi.string().required().pattern(/^(https?:\/\/)(www\.)?([\w\W\d]+)(\.)([a-z]{1,10})([\w\W\d]+)?$/),
     movieId: Joi.number().integer().required(),
     nameRU: Joi.string().required(),
-    nameEN: Joi.string().required()
+    nameEN: Joi.string().required(),
   }),
 }), createMovie);
 

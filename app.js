@@ -2,7 +2,6 @@ const express = require('express');
 require('dotenv').config();
 const mongoose = require('mongoose');
 const cors = require('cors');
-const bodyParser = require('body-parser');
 const { celebrate, Joi } = require('celebrate');
 const { errors } = require('celebrate');
 const movies = require('./routes/movies');
@@ -14,7 +13,7 @@ const NotFoundErr = require('./errors/not-found-err');
 
 const {
   PORT = 3000,
-  MONGO = 'mongodb://localhost:27017/bitfilmsdb'
+  MONGO = 'mongodb://localhost:27017/bitfilmsdb',
 } = process.env;
 const app = express();
 
@@ -22,7 +21,7 @@ mongoose.connect(MONGO, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useFindAndModify: false,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
 });
 
 app.use(cors({
@@ -42,7 +41,7 @@ app.post('/signup', celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().min(2).max(30),
     name: Joi.string().min(2).max(30),
-    password: Joi.string().required().min(8)
+    password: Joi.string().required().min(8),
   }).unknown(true),
 }), createUser);
 

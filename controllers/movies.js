@@ -23,7 +23,7 @@ module.exports.createMovie = (req, res, next) => {
     thumbnail,
     movieId,
     nameRU,
-    nameEN
+    nameEN,
   } = req.body;
   Movie.create({
     country,
@@ -37,7 +37,7 @@ module.exports.createMovie = (req, res, next) => {
     movieId,
     nameRU,
     nameEN,
-    owner: req.user._id
+    owner: req.user._id,
   })
     .then((movie) => res.status(201).send(movie))
     .catch(() => next(new AuthorizationErr()));
